@@ -14,14 +14,23 @@
         body {
             background: linear-gradient(135deg, #1B3A4B 0%, #0F2834 100%);
             font-family: 'Arial Black', 'Arial', 'Helvetica', sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
             color: white;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            display: grid;
+            grid-template-rows: 1fr auto;
+            place-items: center;
+        }
+
+        .main-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 100vw;
         }
 
         .stars-container {
@@ -206,15 +215,17 @@
 <body>
     <div class="stars-container" id="starsContainer"></div>
     
-    <div class="game-container">
-        <h1>SERVICENOW SNAKE</h1>
-        <div class="score-container">
-            <div class="score">Score: <span id="score">0</span></div>
-            <div class="high-score">High Score: <span id="highScore">0</span></div>
-        </div>
-        <canvas id="gameCanvas" width="400" height="400"></canvas>
-        <div class="controls">
-            Use WASD or Arrow Keys to move • Press SPACE to restart
+    <div class="main-content">
+        <div class="game-container">
+            <h1>SERVICENOW SNAKE</h1>
+            <div class="score-container">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="high-score">High Score: <span id="highScore">0</span></div>
+            </div>
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <div class="controls">
+                Use WASD or Arrow Keys to move • Press SPACE to restart
+            </div>
         </div>
     </div>
 
