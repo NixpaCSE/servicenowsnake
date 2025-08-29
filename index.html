@@ -15,9 +15,10 @@
             background: linear-gradient(135deg, #1B3A4B 0%, #0F2834 100%);
             font-family: 'Arial Black', 'Arial', 'Helvetica', sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             color: white;
             position: relative;
             overflow: hidden;
@@ -197,12 +198,6 @@
             box-shadow: 0 5px 15px rgba(129, 215, 66, 0.4);
         }
 
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
-        }
-
         .food {
             animation: pulse 1s infinite;
         }
@@ -228,6 +223,16 @@
         <p>Final Score: <span id="finalScore">0</span></p>
         <button class="restart-btn" onclick="restartGame()">Play Again</button>
     </div>
+
+    <!-- Footer Attribution -->
+    <footer style="background: linear-gradient(135deg, #1B3A4B 0%, #0F2834 100%); padding: 20px; text-align: center; width: 100%; position: relative; z-index: 2; margin-top: auto;">
+        <h3 style="color: #81D742; font-size: 1.2rem; font-weight: 900; margin: 0 0 10px 0; font-family: 'Arial Black', 'Arial', 'Helvetica', sans-serif;">
+            Built by Nicholas Pappas - ServiceNow Developer Intern at KeyBank
+        </h3>
+        <p style="color: #ffffff; font-size: 0.9rem; font-weight: 600; margin: 0; font-family: 'Arial Black', 'Arial', 'Helvetica', sans-serif; font-style: italic; line-height: 1.4; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Classic Snake game with ServiceNow branding, animated starfield background, and local high score storage. Built with HTML5 Canvas, CSS, and JavaScript.
+        </p>
+    </footer>
 
     <script>
         const canvas = document.getElementById('gameCanvas');
@@ -352,6 +357,11 @@
 
         // Handle keyboard input
         document.addEventListener('keydown', (e) => {
+            // Prevent default behavior for game keys to stop page scrolling
+            if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' ', 'w', 'W', 'a', 'A', 's', 'S', 'd', 'D'].includes(e.key)) {
+                e.preventDefault();
+            }
+
             if (!gameRunning && e.code === 'Space') {
                 restartGame();
                 return;
